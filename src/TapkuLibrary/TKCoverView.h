@@ -38,7 +38,10 @@
 	UIImageView *imageView;
 	UIImageView *gradient;
 	UIImageView *reflected;
+	
+	BOOL resizeBasedOnImage;
 }
 @property (retain,nonatomic) UIImage *image;
 @property (assign,nonatomic) float baseline;
+@property BOOL resizeBasedOnImage;
 @end

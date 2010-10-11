@@ -44,7 +44,7 @@
 
 
 @implementation TKCoverView
-@synthesize image,baseline;
+@synthesize image,baseline,resizeBasedOnImage;
 
 
 - (id) initWithFrame:(CGRect)frame {
@@ -105,17 +105,18 @@
 	w = factor * w;
 	float y = baseline - h > 0 ? baseline - h : 0;
 	
-	self.imageView.frame = CGRectMake(0, y, w, h);
+	
 	self.imageView.image = image;
-	
-	
-	
-	self.gradient.frame = CGRectMake(0, y + h, w, h);
-	
-	self.reflected.frame = CGRectMake(0, y + h, w, h);
 	self.reflected.image = image;
+	
+	if (resizeBasedOnImage) {
+		self.imageView.frame = CGRectMake(0, y, w, h);
+		self.gradient.frame = CGRectMake(0, y + h, w, h);
+		self.reflected.frame = CGRectMake(0, y + h, w, h);
+	}
 	//[self setNeedsDisplay];
 }
+
 - (void) setBaseline:(float)f{
 	baseline = f;
 	[self setNeedsDisplay];
