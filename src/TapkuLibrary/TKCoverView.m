@@ -126,6 +126,8 @@
 - (UIImageView*) imageView{
 	if(imageView==nil){
 		imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
+		imageView.contentMode = UIViewContentModeScaleAspectFill;
+		imageView.clipsToBounds = YES;
 	}
 	return imageView;
 }
